@@ -12,36 +12,38 @@
 </head>
 
 <body class="font-sants">
+  <nav class="flex items-center justify-between flex-wrap bg-gray-200 p-6  w-full z-10 pin-t">
+		<div class="flex items-center flex-no-shrink text-white mr-6">
+			<a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+				<img src="./img/laligalogo.svg" alt="" class="h-20">
+			</a>
+		</div>
+
+		<div class="block lg:hidden">
+			<button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-grey border-grey-dark hover:text-white hover:border-white">
+				<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+			</button>
+		</div>
+
+		<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+			<ul class="list-reset lg:flex justify-start flex-1 items-center">
+				<li class="mr-3">
+					<a class="inline-block py-2 px-4 text-gray-800 no-underline" href="index.html">Home</a>
+				</li>
+				<li class="mr-3">
+					<a class="inline-block py-2 px-4 text-gray-800 no-underline" href="matches.html">Partidos</a>
+				</li>
+				<li class="mr-3">
+					<a class="inline-block py-2 px-4 text-gray-800 no-underline" href="standings.html">Estadísticas</a>
+				</li>
+				
+			</ul>
+		</div>
+	</nav>
     <div class="container mx-auto">
-        <header>
-            <img src="./img/laligalogo.svg" alt="">
-        </header>
-        <h1 class="text-4xl font-bold text-center text-blue-500">Partidos de la Liga Santander</h1>
-        <form action="">
-            <label for="team">Elige tu equipo</p> 
-            <select name="team" id="team">
-                <option value="">Athletic Club</option>
-                <option value="">Club Atlético de Madrid  SAD </option>
-                <option value="">Cádiz Club de Fútbol SAD</option>
-                <option value="">Deportivo Alavés SAD</option>
-                <option value="">Elche Club de Fútbol SAD</option>
-                <option value="">Fútbol Club Barcelona</option>
-                <option value=""> Getafe Club de Fútbol SAD</option>
-                <option value="">Granada Club de Fútbol SAD</option>
-                <option value="">Levante Unión Deportiva SAD</option>
-                <option value=""> Real Club Celta de Vigo SAD</option>
-                <option value="">Real Betis Balompié SAD</option>
-                <option value="">Real Madrid Club de Fútbol</option>
-                <option value="">Real Sociedad de Fútbol SAD</option>
-                <option value="">Real Valladolid Club de Fútbol SAD</option>
-                <option value="">Sociedad Deportiva Eibar SAD</option>
-                <option value="">Sociedad Deportiva Huesca SAD</option>
-                <option value="">Sevilla Fútbol Club SAD</option>
-                <option value="">Valencia Club de Fútbol SAD</option>
-                <option value="">Villarreal Club de Fútbol SAD</option>
-                <option value="">All teams</option>
-            </select>
-        </form>
+        
+        <h1 class="text-4xl font-bold text-center text-gray-800 mt-10 mb-10">Partidos de la Liga Santander</h1>
+        
 
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50 sticky">

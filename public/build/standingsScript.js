@@ -1,14 +1,42 @@
 const tableBody = document.querySelector('tbody');
-appendStandings();
+// appendStandings();
+createTable();
+console.log(dataStandings.standings[0].table.length);
+
+//Crear array amb tots els valors
+
+function createTable() {
+    // let newArrayMatches = Array.from(dataMatches.matches);
+    // let keyValue = (Object.entries(newArrayMatches));
+    for (let i = 0; i < dataStandings.standings[0].table.length; i++) {
+        let row = document.createElement("tr")
+        row.className = 'fila';
+        tableBody.appendChild(row);
+        let img = `<img class="w-14 mx-4" src="${dataStandings.standings[0].table[i].team.crestUrl}">`
+        let newArray = [img, dataStandings.standings[0].table[i].team.name, dataStandings.standings[0].table[i].won, dataStandings.standings[0].table[i].lost, dataStandings.standings[0].table[i].draw, dataStandings.standings[0].table[i].goalsFor, dataStandings.standings[0].table[i].goalsAgainst, dataStandings.standings[0].table[i].points, dataStandings.standings[0].table[i].form];
+
+        for (let j = 0; j < newArray.length; j++) {
+            let cell = document.createElement("td")
+            cell.className = "px-6 py-4 whitespace-nowrap"
+
+            row.appendChild(cell);
+            cell.innerHTML = newArray[j];
+        }
+
+
+    }
+}
+
 
 function appendStandings() {
+
     for (let i = 0; i < dataStandings.standings[0].table.length; i++) {
+        //To-do crear array buida per farcir-la amb els values de cada objecte + Loop sobre la array y apend a TR
         tableBody.innerHTML += `
         <tr colspan="2">
                 <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                    </div>
+                    
                     <div class="ml-4">
                         <div class="text-sm font-medium text-gray-900 flex flex-row items-center">
                         <img class="w-14 mx-4" src="${dataStandings.standings[0].table[i].team.crestUrl}">
@@ -34,7 +62,7 @@ function appendStandings() {
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-500">
-                        ${dataStandings.standings[0].table[i].goalsAgainst}
+                        ${dataStandings.standings[0].table.keys}
                     </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -42,12 +70,39 @@ function appendStandings() {
                         ${dataStandings.standings[0].table[i].points}
                     </div>
                 </td>
+                <td class="px-6 py-4 whitespace-nowrap" class="form">
+                    <div class="text-sm text-gray-500">
+                        
+                    </div>
+                </td>
                 
                 </tr>
         
         `;
+
+
     }
 
 
+
+
+
 }
-console.log(dataStandings.standings[0].table[0].team.crestUrl);
+
+const formCell = document.querySelectorAll('.form');
+
+createTable();
+
+
+function appendTeamForm() {
+
+    for (let j = 0; j < formCell.length; j++) {
+
+        for (let i = 0; i < dataStandings.standings[0].table.length; i++) {
+            formCell[j].innerHTML = `${dataStandings.standings[0].table[i].form}`;
+        }
+
+    }
+
+}
+appendTeamForm();
