@@ -14,13 +14,32 @@ function createTable() {
         tableBody.appendChild(row);
         let img = `<img class="w-14 mx-4" src="${dataStandings.standings[0].table[i].team.crestUrl}">`
         let newArray = [img, dataStandings.standings[0].table[i].team.name, dataStandings.standings[0].table[i].won, dataStandings.standings[0].table[i].lost, dataStandings.standings[0].table[i].draw, dataStandings.standings[0].table[i].goalsFor, dataStandings.standings[0].table[i].goalsAgainst, dataStandings.standings[0].table[i].points, dataStandings.standings[0].table[i].form];
-
+        console.log(newArray.length);
         for (let j = 0; j < newArray.length; j++) {
             let cell = document.createElement("td")
-            cell.className = "px-6 py-4 whitespace-nowrap"
+            cell.className = "px-6 py-4 "
 
             row.appendChild(cell);
-            cell.innerHTML = newArray[j];
+            if (newArray[j] == dataStandings.standings[0].table[i].form) {
+
+
+                let form = dataStandings.standings[0].table[i].form;
+                for (l = 0; l < form.length; l++) {
+                    let filteredform = form.replace(/,/g, "");
+                    let filteredform2 = filteredform.replace(/D/g, "<div class=\"\draw\"\></div>");
+                    let filteredform3 = filteredform2.replace(/W/g, "<div class=\"\win\"\></div>");
+                    let filteredform4 = filteredform3.replace(/L/g, "<div class=\"\lose\"\></div>");
+                    filteredform5 = `<div class="form_container">${filteredform4}</div>`;
+                    console.log(filteredform5)
+
+                    cell.innerHTML = filteredform5;
+                }
+
+
+            } else {
+                cell.innerHTML = newArray[j];
+            }
+
         }
 
 
