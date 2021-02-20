@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "build": "postcss css/tailwind.css -o public/build/tailwind.css"
+        "build": "postcss css/tailwind.css -o src/css/tailwind.css"
     },
     "dependencies": {
         "@tailwindcss/forms": "^0.2.1",

@@ -4,14 +4,11 @@
     box-sizing: border-box;
 }
 
-body {}
-
-body .container {
-    /* max-width: 1600px;
-    margin: 0 auto; */
-}
-
 form {
     background-color: rgb(16, 32, 42);
     color: white;
+}
+
+tr:nth-child(even) {
+    background-color: gray;
 }
