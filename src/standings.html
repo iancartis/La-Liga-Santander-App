@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/tailwind.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet">
+
+
+    <title>Document</title>
+</head>
+
+<body class="font-sants">
+<nav class="flex items-center justify-between flex-wrap bg-gray-200 p-6 fixed w-full z-10 pin-t">
+		<div class="flex items-center flex-no-shrink text-white mr-6">
+			<a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+				<img src="./img/laligalogo.svg" alt="" class="h-20">
+			</a>
+		</div>
+
+		<div class="block lg:hidden">
+			<button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-grey border-grey-dark hover:text-white hover:border-white">
+				<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+			</button>
+		</div>
+
+		<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+			<ul class="list-reset lg:flex justify-start flex-1 items-center">
+				<li class="mr-3">
+					<a class="inline-block py-2 px-4 text-gray-800 no-underline transition-all duration-500 ease-in-out hover:text-blue-300" href="index.html">Home</a>
+				</li>
+				<li class="mr-3">
+					<a class="inline-block py-2 px-4 text-gray-800 no-underline transition-all duration-500 ease-in-out hover:text-blue-300" href="matches.html">Partidos</a>
+				</li>
+				<li class="mr-3">
+					<a class="inline-block py-2 px-4 text-gray-800 no-underline transition-all duration-500 ease-in-out hover:text-blue-300" href="standings.html">Estadísticas</a>
+				</li><li class="mr-3">
+					<a class="inline-block py-2 px-4 text-gray-800 no-underline transition-all duration-500 ease-in-out hover:text-blue-300" href="estadisticas.html">Top 5</a>
+				</li>
+				
+			</ul>
+		</div>
+	</nav>
+
+    <div class="container mx-auto grid-cols-12">
+        <header class="flex flex-col items-start">
+            <img src="./img/laligalogo.svg" alt="" class="h-20">
+            <ul class="text-white bg-gray-800 flex flex-row h-10 w-full pt-2">
+              <li class="ml-20"><a href="index.html" class="transition-all hover:underline 	">Home</a></li>
+              <li class="ml-20"><a href="standings.html" class="transition-all hover:underline 	">Standings</a></li>
+              <li class="ml-20"><a href="matches.html" class="transition-all hover:underline 	">Matches</a></li>
+            </ul>
+        </header>
+        <div class="title flex justify-between">
+          <h1 class="text-4xl font-bold text-center text-gray-800 mt-10 mb-10">Clasificación de la Liga Santander</h1>
+        <div class="form_leyenda mt-5 ">
+          <ul class="flex flex-col justify-between h-full p-3">
+            <li class="flex"><div class="win mr-2"></div>Partido ganado</li>
+            <li class="flex"><div class="lose mr-2"></div>Partido perdido</li>
+            <li class="flex"><div class="draw mr-2"></div>Partido empatado</li>
+            
+          </ul>
+        </div>
+        </div>
+        
+       
+
+        <table class="table-auto min-w-full divide-y divide-gray-200 sm:max-w-2xl ">
+          <thead class="bg-gray-50">
+            <tr>
+              
+              <th scope="col" colspan="2" class="px-6 py-3 text-center text-xs font-medium text-white bg-gray-800 top-0 sticky uppercase tracking-wider">
+                Equipo
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 top-0 sticky uppercase tracking-wider">
+                Partidos Ganados
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 top-0 sticky uppercase tracking-wider">
+                Partidos Perdidos
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 top-0 sticky uppercase tracking-wider">
+                Partidos Empatados
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 top-0 sticky uppercase tracking-wider">
+                Goles a favor
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 top-0 sticky uppercase tracking-wider">
+                Goles en contra
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 top-0 sticky uppercase tracking-wider">
+                Puntos
+              </th>
+               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 top-0 sticky uppercase tracking-wider">
+                Últimos 5 partidos
+              </th>
+              
+              
+            </tr>
+          </thead >
+          <tbody class="bg-white divide-y divide-gray-200 odd:bg-red-500">
+            
+            
+            
+
+            <!-- More items... -->
+          </tbody>
+          
+        </table>
+        
+    </div>
+    <script src="./standingsScript.js"></script>
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
