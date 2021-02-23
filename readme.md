@@ -75,7 +75,7 @@ Once the packages have been installed you should run the command to compile the 
 node run build
 ~~~
 
-Once run, you should see compiled the styles on the
+Once run, you should see compiled the styles on the src>css folder
 ![Css Compiling route](./docs/tailwind_folder.png)
 
 ## Version
