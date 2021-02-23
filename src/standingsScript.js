@@ -23,13 +23,6 @@ window.addEventListener('load', () => {
 });
 
 
-
-
-
-
-// appendStandings();
-// createTable();
-
 function loader() {
     let loader = document.createElement('div');
 
@@ -49,21 +42,23 @@ function loaderAway() {
 }
 //Crear array amb tots els valors
 function createArray(fetchResponse) {
-    for (let i = 0; i < fetchResponse.standings[0].table.length; i++) {
+    fetchResponse = fetchResponse.standings[0].table
+    fetchResponse.forEach(element => {
         let row = document.createElement("tr")
         row.className = 'fila ';
         tableBody.appendChild(row);
-        let img = `<img class="w-14 mx-4" src="${fetchResponse.standings[0].table[i].team.crestUrl}">`
-        let newArray = [img, fetchResponse.standings[0].table[i].team.name, fetchResponse.standings[0].table[i].won, fetchResponse.standings[0].table[i].lost, fetchResponse.standings[0].table[i].draw, fetchResponse.standings[0].table[i].goalsFor, fetchResponse.standings[0].table[i].goalsAgainst, fetchResponse.standings[0].table[i].points, fetchResponse.standings[0].table[i].form];
+        //create element html
+        let img = `<img class="w-14 mx-4" src="${element.team.crestUrl}">`
+        let newArray = [img, element.team.name, element.won, element.lost, element.draw, element.goalsFor, element.goalsAgainst, element.points, element.form];
         for (let j = 0; j < newArray.length; j++) {
             let cell = document.createElement("td")
-            cell.className = "px-6 py-4 "
+            cell.className = "px-6 py-4 text-center"
 
             row.appendChild(cell);
-            if (newArray[j] == fetchResponse.standings[0].table[i].form) {
+            if (newArray[j] == element.form) {
 
 
-                let form = fetchResponse.standings[0].table[i].form;
+                let form = element.form;
                 for (l = 0; l < form.length; l++) {
                     let filteredform = form.replace(/,/g, "");
                     let filteredform2 = filteredform.replace(/D/g, "<div class=\"\draw\"\></div>");
@@ -80,19 +75,14 @@ function createArray(fetchResponse) {
             }
 
         }
+    });
 
-
-    }
     loaderAway();
 }
 
-
-
-
-function appendStandings() {
-
-    for (let i = 0; i < fetchResponse.standings[0].table.length; i++) {
-        //To-do crear array buida per farcir-la amb els values de cada objecte + Loop sobre la array y apend a TR
+function appendStandings(fetchResponse) {
+    fetchResponse = fetchResponse.standings[0].table
+    fetchResponse.forEach(element => {
         tableBody.innerHTML += `
         <tr colspan="2">
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -100,26 +90,26 @@ function appendStandings() {
                     
                     <div class="ml-4">
                         <div class="text-sm font-medium text-gray-900 flex flex-row items-center">
-                        <img class="w-14 mx-4" src="${fetchResponse.standings[0].table[i].team.crestUrl}">
+                        <img class="w-14 mx-4" src="${element.team.crestUrl}">
 
-                        ${fetchResponse.standings[0].table[i].team.name}
+                        ${element.team.name}
                         </div>
                         
                     </div>
                     </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">${fetchResponse.standings[0].table[i].won}</div>
+                    <div class="text-sm text-gray-900">${element.won}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    ${fetchResponse.standings[0].table[i].lost}
+                    ${element.lost}
                     
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">${fetchResponse.standings[0].table[i].draw}</div>
+                    <div class="text-sm text-gray-900">${element.draw}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">${fetchResponse.standings[0].table[i].goalsFor}</div>
+                    <div class="text-sm text-gray-900">${element.goalsFor}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-500">
@@ -128,7 +118,7 @@ function appendStandings() {
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-500">
-                        ${fetchResponse.standings[0].table[i].points}
+                        ${element.points}
                     </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap" class="form">
@@ -140,30 +130,17 @@ function appendStandings() {
                 </tr>
         
         `;
-
-
-    }
-
-
-
-
+    })
 
 }
-
-const formCell = document.querySelectorAll('.form');
-
-
-
 
 function appendTeamForm() {
-
-    for (let j = 0; j < formCell.length; j++) {
-
-        for (let i = 0; i < fetchResponse.standings[0].table.length; i++) {
-            formCell[j].innerHTML = `${fetchResponse.standings[0].table[i].form}`;
-        }
-
-    }
+    fetchResponse = fetchResponse.standings[0].table
+    const formCell = document.querySelectorAll('.form');
+    formCell.forEach(table => {
+        table.forEach(cell => {
+            table.innerHTML = `${fetchResponse.form}`
+        })
+    })
 
 }
-appendTeamForm();
