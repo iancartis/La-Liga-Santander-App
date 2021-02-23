@@ -12,6 +12,19 @@ table tr td {
     display: flex;
 }
 
+nav {
+    top: 0;
+}
+
+.container {
+    position: relative;
+    top: 200px;
+}
+
+.title {
+    margin: 0 auto;
+}
+
 
 /*Loader*/
 
@@ -201,6 +214,8 @@ table tr td {
     font-size: 2em;
     display: none;
     transition: 0.2s;
+    color: white;
+    font-weight: 600;
 }
 
 .home-container a:hover h2 {
