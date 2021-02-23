@@ -1,8 +1,32 @@
-.form_leyenda {}
+/*Global styles*/
+
+table tr {
+    height: 100px;
+}
+
+table tr td {
+    height: 100px;
+}
 
 .form_container {
     display: flex;
 }
+
+nav {
+    top: 0;
+}
+
+.container {
+    position: relative;
+    top: 200px;
+}
+
+.title {
+    margin: 0 auto;
+}
+
+
+/*Loader*/
 
 .ring-container {
     position: absolute;
@@ -56,6 +80,9 @@
     }
 }
 
+
+/*Matches*/
+
 .win {
     background-image: url(./../img/ok.png);
     position: relative;
@@ -83,43 +110,6 @@
     background-size: cover;
 }
 
-.top5,
-.less5 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.alertcontainer div {
-    position: absolute;
-    top: 35vh;
-    left: 30vw;
-    min-height: 200px;
-    align-items: center;
-    display: flex;
-}
-
-.fila {
-    min-height: 100px;
-}
-
-.fila:nth-child(even) {
-    background-color: rgb(201, 201, 201);
-}
-
-table tr {
-    height: 100px;
-}
-
-table tr td {
-    height: 100px;
-}
-
-.tableless thead tr,
-.tabletop thead tr {
-    height: 120px;
-}
-
 .equipos {
     margin: 0;
     padding: 0;
@@ -145,13 +135,15 @@ table tr td {
     margin-top: 60px;
 }
 
-.aplazado,
 .inplay {
     margin-top: 50%;
 }
 
+.aplazado,
 .toplay {
     margin-top: 0;
+    text-align: center;
+    margin: 5% 0;
 }
 
 .tableheader {
@@ -162,6 +154,41 @@ table tr td {
     justify-content: center;
     align-items: center;
 }
+
+
+/*Statistics Tables*/
+
+.top5,
+.less5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alertcontainer div {
+    position: absolute;
+    top: 35vh;
+    left: 30vw;
+    min-height: 200px;
+    align-items: center;
+    display: flex;
+}
+
+.fila {
+    min-height: 100px;
+}
+
+.fila:nth-child(even) {
+    background-color: rgb(201, 201, 201);
+}
+
+.tableless thead tr,
+.tabletop thead tr {
+    height: 120px;
+}
+
+
+/*Home*/
 
 .home-container a {
     width: 33%;
@@ -187,6 +214,8 @@ table tr td {
     font-size: 2em;
     display: none;
     transition: 0.2s;
+    color: white;
+    font-weight: 600;
 }
 
 .home-container a:hover h2 {
@@ -197,11 +226,17 @@ table tr td {
     filter: grayscale(50%);
 }
 
+
+/*Media Queries*/
+
 @media only screen and (max-width: 600px) {
     .home-container {
         flex-direction: column;
     }
     .home-container a {
         width: 100%;
+    }
+    .filtros {
+        flex-direction: column;
     }
 }
