@@ -1,5 +1,5 @@
 #  La Liga Santander App
-
+![Css Compiling route](./docs/app_screenshot.png)
 
 ## Functional Description
 Hi!, This App offers updated info of the La Liga championship. Here are the main info users can look up:
