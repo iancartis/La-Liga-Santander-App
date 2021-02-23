@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/tailwind.css" rel="stylesheet">
-<link href="./styles.css" rel="stylesheet">
+<link href="./css/styles.css" rel="stylesheet">
 
     <title>Document</title>
 </head>
@@ -34,7 +34,7 @@
 					<a class="inline-block py-2 px-4 text-gray-800 no-underline transition-all duration-500 ease-in-out hover:text-blue-300" href="matches.html">Partidos</a>
 				</li>
 				<li class="mr-3">
-					<a class="inline-block py-2 px-4 text-gray-800 no-underline transition-all duration-500 ease-in-out hover:text-blue-300" href="standings.html">Estadísticas</a>
+					<a class="inline-block py-2 px-4 text-gray-800 no-underline transition-all duration-500 ease-in-out hover:text-blue-300" href="standings.html">Clasificación</a>
 				</li><li class="mr-3">
 					<a class="inline-block py-2 px-4 text-gray-800 no-underline transition-all duration-500 ease-in-out hover:text-blue-300" href="estadisticas.html">Top 5</a>
 				</li>
@@ -85,18 +85,25 @@
                 <span class="ml-2">Próximos</span>
               </label>
             </div>
+            <div class="mx-5">  
+              </label>
+              <label class="inline-flex items-center" for="reset">
+                <input type="radio" class="form-radio" name="tipo" id="proximos" value="reset">
+                <span class="ml-2">Reset</span>
+              </label>
+            </div>
           </div>
         </div>
-        <table class="min-w-full table-auto divide-y divide-gray-200">
+        <table class="min-w-full table-auto divide-y divide-gray-200 overflow-scroll">
           <thead class="bg-gray-50 sticky">
             <tr>
               <th scope="col" class=" sticky top-0 px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 uppercase tracking-wider">
                 Equipo
               </th>
-              <th scope="col" class="sticky top-0 px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 uppercase tracking-wider">
+              <th scope="col" class="sticky top-0 px-6 py-3 text-center text-xs font-medium text-white bg-gray-800 uppercase tracking-wider">
                 Resultado
               </th>
-              <th scope="col" class="sticky top-0 px-6 py-3 text-left text-xs font-medium text-white bg-gray-800 uppercase tracking-wider">
+              <th scope="col" class="sticky top-0 px-6 py-3 text-center text-xs font-medium text-white bg-gray-800 uppercase tracking-wider">
                 Jornada
               </th>
               

@@ -47,11 +47,12 @@ function createArray(fetchResponse) {
         let row = document.createElement("tr")
         row.className = 'fila ';
         tableBody.appendChild(row);
+        //create element html
         let img = `<img class="w-14 mx-4" src="${element.team.crestUrl}">`
         let newArray = [img, element.team.name, element.won, element.lost, element.draw, element.goalsFor, element.goalsAgainst, element.points, element.form];
         for (let j = 0; j < newArray.length; j++) {
             let cell = document.createElement("td")
-            cell.className = "px-6 py-4 "
+            cell.className = "px-6 py-4 text-center"
 
             row.appendChild(cell);
             if (newArray[j] == element.form) {
