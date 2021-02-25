@@ -5,7 +5,16 @@ const tableBody = document.querySelector('tbody');
 function loadData(data) {
 
     appendMatches(data);
+}
 
+function resetbutton(data) {
+    let button = document.querySelector('.resetbutton');
+    let searchForm = document.getElementById('search');
+    button.addEventListener('click', function() {
+        searchForm.value = "";
+        loadData(data);
+
+    })
 
 }
 
@@ -14,6 +23,7 @@ function searchData(data) {
         e.preventDefault();
         let partidosFiltrados = filterArraySearch(data);
         appendMatches(partidosFiltrados);
+        resetbutton(data);
     })
 }
 
@@ -22,7 +32,7 @@ function searchData(data) {
 fetch('https://api.football-data.org/v2/competitions/2014/matches', {
         method: 'GET',
         headers: {
-            'X-Auth-Token': 'f1369749923140b09d6fd4c523b50ef1'
+            'X-Auth-Token': apicode
         }
     })
     .then(response => { loader(); return response.json() })
@@ -158,7 +168,7 @@ function filterArraySearch(array) {
     let radio = document.querySelector('input[name="tipo"]:checked');
     let searchForm = document.getElementById('search').value;
     let finalArray = [];
-
+    resetbutton();
 
     //Aqust if aplicarlo més tard en el filter del array. if filter ok -> retorno !! si el filtre es ko llenço la funció per mostrar l'error
     let searchedArray = array.filter(element => {
@@ -197,8 +207,8 @@ function filterArraySearch(array) {
             })
 
 
-        } else if (radioValue == "reset") {
-            console.log('reset');
+        } else if (resetbutton) {
+            search.value = "";
             finalArray = array
 
         }

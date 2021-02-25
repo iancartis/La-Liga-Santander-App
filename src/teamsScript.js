@@ -1,31 +1,113 @@
 const teamContainer = document.querySelector('.team_container');
-console.log(Object.keys(dataTeams.teams[0]));
 // appendStandings();
-createTeams();
+// createTeams();
+const url = "https://api.football-data.org/v2/competitions/2014/teams";
+
+const body = document.querySelector('body');
+const table = document.querySelector('table thead tr');
+const tableBody = document.querySelector('tbody');
+showData(url, apicode);
+
+function showData(url, apiKey) {
+    // if (window.localStorage.getItem('array') < 0) {
+    window.addEventListener('load', () => {
+        loader();
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'X-Auth-Token': apiKey
+                }
+            })
+            .then(response => { return response.json() })
+            .then(data => {
+                // localStorage.setItem("array", JSON.stringify(data));
+                console.log(data);
+                createTeams(data);
+                loaderAway();
+
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+
+}
+
+function loader() {
+    let loader = document.createElement('div');
+
+    loader.className = "ring-container";
+    loader.innerHTML = `<div class="lds-ring"><div></div><div></div><div></div><div></div> </div>   `
+    body.appendChild(loader);
+
+}
+
+function loaderAway() {
+    let loader = document.querySelector('.ring-container');
+    body.removeChild(body.lastChild);
+
+
+
+}
 
 //Crear array amb tots els valors
 
-function createTeams() {
+function createTeams(array) {
     console.log(teamContainer);
-    for (let i = 0; i < dataTeams.count; i++) {
+    for (let i = 0; i < array.teams.length; i++) {
         let teamObject = document.createElement('article');
-        console.log(teamObject);
+        teamObject.setAttribute('id', array.teams[i].shortName)
         teamObject.classList.add('team');
         teamContainer.appendChild(teamObject);
-        for (let j = 0; j < Object.keys(dataTeams.teams[0]).length; j++) {
+        let img = document.createElement('img');
+        img.setAttribute("src", array.teams[i].crestUrl)
+        teamObject.appendChild(img);
+        let nombre = document.createElement('h2')
+        nombre.className = "text-3xl font-bold text-center"
+        nombre.innerText = array.teams[i].name;
+        teamObject.appendChild(nombre);
+        let fundacion = document.createElement('p');
+        fundacion.className = "fundacion text-2xl ";
+        fundacion.innerText = `Fundado en ${array.teams[i].founded}`;
+        teamObject.appendChild(fundacion);
+        let estadio = document.createElement('p');
+        estadio.className = 'estadio text-1xl ';
+        estadio.innerText = array.teams[i].venue;
+        teamObject.appendChild(estadio);
+        let web = document.createElement('a');
+        web.className = "web"
+        web.setAttribute('href', array.teams[i].website);
+        web.innerHTML = "Visita su web";
+        teamObject.appendChild(web);
+        // let colors = document.createElement('p');
 
-            let img = document.createElement('div');
-            img.innerHTML = `<img src="${dataTeams.teams[j].crestUrl}">`;
-            teamObject.appendChild(img);
+        // let colorsValue = array.teams[i].clubColors;
+        // colorsValue = colorsValue.split("/");
+        // colorsValue = colorsValue.join("");
+        // colors.innerText = colorsValue;
+        // colors.className = colorsValue;
+        // teamObject.appendChild(colors);
 
 
 
 
 
-        }
+
+        teamContainer.appendChild(teamObject);
 
     }
+
 }
+
+
+
+
+
+//         }
+
+//     }
+// }
 // for (let i = 0; i < dataStandings.standings[0].table.length; i++) {
 //     let row = document.createElement("tr")
 //     row.className = 'fila ';

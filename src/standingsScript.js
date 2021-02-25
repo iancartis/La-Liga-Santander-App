@@ -1,26 +1,82 @@
-let body = document.querySelector('body');
-
+const body = document.querySelector('body');
 const table = document.querySelector('table thead tr');
 const tableBody = document.querySelector('tbody');
-console.log(table);
+const url = "https://api.football-data.org/v2/competitions/2014/standings";
+showData(url, apicode);
 
-window.addEventListener('load', () => {
-    let fetchResponse = fetch('https://api.football-data.org/v2/competitions/2014/standings', {
-            method: 'GET',
-            headers: {
-                'X-Auth-Token': 'f1369749923140b09d6fd4c523b50ef1'
-            }
-        })
-        .then(response => { loader(); return response.json() })
+function showData(url, apiKey) {
+    // if (window.localStorage.getItem('array') < 0) {
+    window.addEventListener('load', () => {
+        loader();
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'X-Auth-Token': apiKey
+                }
+            })
+            .then(response => { return response.json() })
+            .then(data => {
+                localStorage.setItem("array", JSON.stringify(data));
+                console.log(data);
+                createArray(data);
+                loaderAway();
 
-    .then(data => {
 
-        createArray(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
 
 
     });
 
-});
+    // } else {
+    //     window.addEventListener('load', () => {
+    //         let dataArray = JSON.parse(localStorage.getItem("arrayStandings"));
+    //         console.log(dataArray);
+    //         createArray(dataArray);
+    //         loaderAway();
+
+
+    //     });
+    // }
+
+}
+
+// function showData(url, apiKey) {
+//     if (window.localStorage.getItem('array') < 0) {
+//         window.addEventListener('load', () => {
+//             loader();
+//             fetch(url, {
+//                     method: 'GET',
+//                     headers: {
+//                         'X-Auth-Token': apiKey
+//                     }
+//                 })
+//                 .then(response => {
+//                     return response.json()
+//                 })
+//                 .then(data => {
+//                     localStorage.setItem("array", JSON.stringify(data));
+//                     console.log(data);
+//                     createArray(data);
+//                     loaderAway();
+//                 });
+
+//         });
+
+//     } else {
+//         window.addEventListener('load', function() {
+//             let dataArray = JSON.parse(localStorage.getItem("arrayStandings"));
+//             console.log(dataArray);
+//             createArray(dataArray);
+//             loaderAway();
+//         });
+
+//     }
+
+// }
+
 
 
 function loader() {
@@ -49,7 +105,7 @@ function createArray(fetchResponse) {
         tableBody.appendChild(row);
         //create element html
         let img = `<img class="w-14 mx-4" src="${element.team.crestUrl}">`
-        let newArray = [img, element.team.name, element.won, element.lost, element.draw, element.goalsFor, element.goalsAgainst, element.points, element.form];
+        let newArray = [img, element.team.name, element.won, element.lost, element.draw, element.goalsFor, element.goalsAgainst, element.points, element.playedGames, element.form];
         for (let j = 0; j < newArray.length; j++) {
             let cell = document.createElement("td")
             cell.className = "px-6 py-4 text-center"
@@ -77,7 +133,6 @@ function createArray(fetchResponse) {
         }
     });
 
-    loaderAway();
 }
 
 function appendStandings(fetchResponse) {
