@@ -86,7 +86,11 @@ v.1.1: Matches, Standings and statistics added
 v.1.0: Refactor of the code and added the Home interface to acces inner sections (23/02/21)
 
 ## To-Dos
-
+- Añadir local storage
 - Add a Teams page to browse them.
 - Link each team on each page (standing, matches, estadísticas) to each Team page
 - Apply animations
+- Añadir un .env para guardar la APi Key
+- Permitir realizar buscado de equipos sin que el literal sea exacto al nombre del equipo
+- Abstraer las funciones para poder mostrar otras ligas
+

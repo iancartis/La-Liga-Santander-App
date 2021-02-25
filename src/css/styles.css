@@ -1,5 +1,9 @@
 /*Global styles*/
 
+* {
+    box-sizing: border-box;
+}
+
 table tr {
     height: 100px;
 }
@@ -199,6 +203,7 @@ nav {
     overflow: hidden;
     transition: 0.2s;
     margin-top: 100px;
+    background-color: black;
 }
 
 .home-container a img {
@@ -206,6 +211,7 @@ nav {
     width: auto;
     object-fit: cover;
     filter: grayscale(0%);
+    opacity: 1;
     transition: 0.2s;
 }
 
@@ -218,12 +224,75 @@ nav {
     font-weight: 600;
 }
 
+.home-container a:hover img {
+    background-color: black;
+    opacity: 0.5;
+}
+
 .home-container a:hover h2 {
     display: block;
 }
 
 .home-container a:hover img {
     filter: grayscale(50%);
+}
+
+
+/*Teams*/
+
+.team_container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.team {
+    width: 40%;
+    margin: 5%;
+    border-radius: 20px;
+    /* border: 1px solid grey; */
+    padding: 50px 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid grey;
+}
+
+.team img {
+    max-width: 200px;
+}
+
+.team img,
+.team .fundacion {
+    margin: 0 auto;
+}
+
+.team .estadio {
+    text-align: center;
+    color: rgb(167, 166, 166);
+}
+
+.team h2 {}
+
+.team .web {
+    background-color: rgb(140, 187, 211);
+    color: rgb(9, 71, 103);
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 8px;
+    transition: 0.2s;
+}
+
+.team .web:hover {
+    background-color: rgb(8, 162, 239);
+    color: white;
 }
 
 

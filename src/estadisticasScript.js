@@ -1,6 +1,9 @@
 const body = document.querySelector('body');
 const tableTopBody = document.querySelector('.tabletop tbody');
 const tableLessBody = document.querySelector('.tableless tbody');
+const url = "https://api.football-data.org/v2/competitions/2014/matches"
+showData(url, apicode);
+
 
 // let partidos = dataMatches.matches
 // let resultados = getAverageGoalsGame(partidos);
@@ -8,25 +11,46 @@ const tableLessBody = document.querySelector('.tableless tbody');
 // console.log(partidos);
 // console.log(resultadosAway);
 
-// Event Listener page on load
-fetch('https://api.football-data.org/v2/competitions/2014/matches', {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': 'f1369749923140b09d6fd4c523b50ef1'
-        }
-    })
-    .then(response => { loader(); return response.json() })
-    .then(data => {
-        console.log(data.matches);
-        createLessGoalsTable(getFewerGoalsGame(data.matches));
-        createAverageTable(data.matches);
+function showData(url, apiKey) {
+    if (window.localStorage.getItem('array') < 0) {
+        window.addEventListener('load', () => {
+            loader();
+            fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'X-Auth-Token': apiKey
+                    }
+                })
+                .then(response => { return response.json() })
+                .then(data => {
+                    localStorage.setItem("array", JSON.stringify(data));
+                    console.log(data.matches);
+                    createLessGoalsTable(getFewerGoalsGame(data.matches));
+                    createAverageTable(data.matches);
+                    loaderAway();
 
 
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
 
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+
+        });
+
+    } else {
+        window.addEventListener('load', () => {
+            loader();
+            let dataArray = JSON.parse(localStorage.getItem('array'))
+            createLessGoalsTable(getFewerGoalsGame(dataArray.matches));
+            createAverageTable(dataArray.matches);
+            loaderAway();
+
+
+        });
+    }
+
+}
 
 
 function loader() {
@@ -219,7 +243,6 @@ function getFewerGoalsGame(partidos) {
 
 //Creamos la tabla con el top de equipos menos goleados
 function createLessGoalsTable(array) {
-    loader();
     for (let i = 0; i < 5; i++) {
         let row = document.createElement("tr")
         row.className = 'fila ';
@@ -235,5 +258,4 @@ function createLessGoalsTable(array) {
             cell.innerHTML = newArray[j];
         }
     }
-    loaderAway();
 }
